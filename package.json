@@ -1,0 +1,51 @@
+{
+	"name": "gulp-minify-inline",
+	"description": "Gulp plugin to uglify inline scripts and minify inline CSS",
+	"version": "0.0.0",
+	"author": {
+		"name": "Alexander Kuznetsov",
+		"email": "alexander@kuznetsov.by",
+		"url": "http://kuznetsov.by/"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/shkuznetsov/gulp-minify-inline.git"
+	},
+	"homepage": "https://github.com/shkuznetsov/gulp-minify-inline",
+	"keywords": [
+		"gulpplugin",
+		"uglify",
+		"minify",
+		"inline",
+		"js",
+		"javascript",
+		"script"
+	],
+	"main": "./index.js",
+	"dependencies": {
+		"gulp-util": "^2.2.17",
+		"cheerio": "^0.17.0",
+		"uglify-js": "^2.4.15",
+		"through2": "^0.5.1"
+	},
+	"devDependencies": {
+		"gulp": "~3.5.2",
+		"chai": "~1.9.0",
+		"mocha": "~1.17.1"
+	},
+	"scripts": {
+		"test": "mocha"
+	},
+	"engines": {
+		"node": ">= 0.10"
+	},
+	"licenses": [
+		{
+			"type": "MIT"
+		}
+	],
+	"readmeFilename": "README.md",
+	"bugs": {
+		"url": "https://github.com/shkuznetsov/gulp-minify-inline/issues"
+	}
+}
