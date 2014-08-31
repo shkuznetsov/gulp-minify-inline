@@ -1,17 +1,16 @@
 var through = require('through2'),
 	cheerio = require('cheerio'),
-	uglify = require('uglify-js'),
+	uglifyjs = require('uglify-js'),
+	cleancss = require('clean-css'),
 	gutil = require('gulp-util');
 
-const PLUGIN_NAME = 'gulp-uglify-inline';
+const PLUGIN_NAME = 'gulp-minify-inline';
 
 module.exports = function ( opt )
 {
 	opt = opt || {};
 
-	opt.fromString = true;
-
-	function minimize ( file, encoding, callback )
+	function minify ( file, encoding, callback )
 	{
 		if (file.isNull())
 		{
@@ -20,23 +19,42 @@ module.exports = function ( opt )
 
 		if (file.isStream())
 		{
-			return callback(new gutil.PluginError('gulp-uglify-inline', 'doesn\'t support Streams'));
+			return callback(new gutil.PluginError('gulp-minify-inline', 'doesn\'t support Streams'));
 		}
 
 		var $ = cheerio.load(file.contents.toString());
 
 		var has_done_nothing = true;
 
-		$('script').each(function ( )
+		if (opt.js !== false) $('script').each(function ( )
 		{
+			if (!opt.js) opt.js = {};
+
+			opt.js.fromString = true;
+
 			var $this = $(this),
 				script_orig = $this.text().trim();
 
 			if (script_orig !== '')
 			{
-				var script_min = uglify.minify(script_orig, opt);
+				var script_min = uglifyjs.minify(script_orig, opt.js);
 
 				$this.text(script_min.code);
+
+				has_done_nothing = false;
+			}
+		});
+
+		if (opt.css !== false) $('style').each(function ( )
+		{
+			var $this = $(this),
+				style_orig = $this.text().trim();
+
+			if (style_orig !== '')
+			{
+				var style_min = new cleancss(opt.css).minify(style_orig);
+
+				$this.text(style_min);
 
 				has_done_nothing = false;
 			}
@@ -47,5 +65,5 @@ module.exports = function ( opt )
 		callback(null, file);
 	}
 
-	return through.obj(minimize);
+	return through.obj(minify);
 }
