@@ -1,7 +1,7 @@
 {
 	"name": "gulp-minify-inline",
-	"description": "Gulp plugin to uglify inline scripts and minify inline CSS",
 	"version": "0.0.0",
+	"description": "Gulp plugin to uglify inline JS and minify inline CSS",
 	"author": {
 		"name": "Alexander Kuznetsov",
 		"email": "alexander@kuznetsov.by",
@@ -19,7 +19,9 @@
 		"inline",
 		"js",
 		"javascript",
-		"script"
+		"script",
+		"css",
+		"style"
 	],
 	"main": "./index.js",
 	"dependencies": {
