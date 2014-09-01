@@ -12,6 +12,20 @@ Install package with NPM and add it to your development dependencies:
 
 ## Usage
 
+Straightforward way:
+
+```javascript
+var minifyInline = require('gulp-minify-inline');
+
+gulp.task('minify-inline', function() {
+  gulp.src('src/*.html')
+    .pipe(minifyInline())
+    .pipe(gulp.dest('dist/'))
+});
+```
+
+Need a bit more control?
+
 ```javascript
 var minifyInline = require('gulp-minify-inline');
 
@@ -27,9 +41,9 @@ var options = {
 };
 
 gulp.task('minify-inline', function() {
-  gulp.src('./*.html')
+  gulp.src('src/*.html')
     .pipe(minifyInline(options))
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest('dist/'))
 });
 ```
 
