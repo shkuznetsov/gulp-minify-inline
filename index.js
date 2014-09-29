@@ -9,6 +9,8 @@ const PLUGIN_NAME = 'gulp-minify-inline';
 module.exports = function ( opt )
 {
 	opt = opt || {};
+	// gulp-minify-inline specific options that are not passed on.
+	opt.minifyInline = opt.minifyInline || {};
 
 	function minify ( file, encoding, callback )
 	{
@@ -26,7 +28,8 @@ module.exports = function ( opt )
 
 		var has_done_nothing = true;
 
-		if (opt.js !== false) $('script').each(function ( )
+		var jsSelector = opt.minifyInline.jsSelector || 'script';
+		if (opt.js !== false) $(jsSelector).each(function ( )
 		{
 			if (!opt.js) opt.js = {};
 
@@ -45,7 +48,8 @@ module.exports = function ( opt )
 			}
 		});
 
-		if (opt.css !== false) $('style').each(function ( )
+		var cssSelector = opt.minifyInline.cssSelector || 'style';
+		if (opt.css !== false) $(cssSelector).each(function ( )
 		{
 			var $this = $(this),
 				style_orig = $this.text().trim();
@@ -66,4 +70,4 @@ module.exports = function ( opt )
 	}
 
 	return through.obj(minify);
-}
+};
