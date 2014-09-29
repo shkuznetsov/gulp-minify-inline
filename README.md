@@ -49,6 +49,13 @@ gulp.task('minify-inline', function() {
 
 ### Options
 
+Use `options.minifyInline` to pass arguments directly to the `gulp-minify-inline` task.
+
+Right now the following options are supported:
+
+* `options.minifyInline.jsSelector [default:'script']`: If included, this is passed to cheerio as the primary selector for determining which inline tags are processed as JS.
+* `options.minifyInline.cssSelector [default:'style']`: If included, this is passed to cheerio as the primary selector for determining which inline tags are processed as CSS.
+
 Use `options.js` to pass parameters to UglifyJS2 (for documetation refer to [the project homepage](https://github.com/mishoo/UglifyJS2)) or set it to `false` to disable JS uglification.
 
 Use `options.css` to pass parameters to clean-css (for documetation refer to [the project homepage](https://github.com/jakubpawlowicz/clean-css)) or set it to `false` to disable CSS minification.
