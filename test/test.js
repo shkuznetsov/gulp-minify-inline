@@ -67,14 +67,12 @@ describe('gulp-minify-html', function ( )
 			}));
 	});
 
-	it('should respect the and the js css selector', function( done )
+	it('should respect css and js selectors', function( done )
 	{
-		gulp.src(__dirname + '/fixture/index_with_templates.html')
+		gulp.src(__dirname + '/fixture/index_with_selectors.html')
 			.pipe(minifyInline({
-				minifyInline: {
-					jsSelector: 'script[type!="x-blah-blah-templates"]',
-					cssSelector: 'someGarbageSelectot'
-				}
+				jsSelector: 'script[type!="text/x-handlebars-template"]',
+				cssSelector: 'style[do-not-minify!="true"]'
 			}))
 			.pipe(through.obj(function ( file, e, c ) {
 				var contents = file.contents.toString();

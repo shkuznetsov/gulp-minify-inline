@@ -35,9 +35,11 @@ var options = {
 			comments: true
 		}
 	},
+	jsSelector: 'script[type!="text/x-handlebars-template"]',
 	css: {
 		keepSpecialComments: 1
-	}
+	},
+	cssSelector: 'style[do-not-minify!="true"]'
 };
 
 gulp.task('minify-inline', function() {
@@ -49,16 +51,12 @@ gulp.task('minify-inline', function() {
 
 ### Options
 
-Use `options.minifyInline` to pass arguments directly to the `gulp-minify-inline` task.
-
 Right now the following options are supported:
 
-* `options.minifyInline.jsSelector [default:'script']`: If included, this is passed to cheerio as the primary selector for determining which inline tags are processed as JS.
-* `options.minifyInline.cssSelector [default:'style']`: If included, this is passed to cheerio as the primary selector for determining which inline tags are processed as CSS.
-
-Use `options.js` to pass parameters to UglifyJS2 (for documetation refer to [the project homepage](https://github.com/mishoo/UglifyJS2)) or set it to `false` to disable JS uglification.
-
-Use `options.css` to pass parameters to clean-css (for documetation refer to [the project homepage](https://github.com/jakubpawlowicz/clean-css)) or set it to `false` to disable CSS minification.
+* `js` contains parameters to pass to UglifyJS2 (for documetation refer to [the project homepage](https://github.com/mishoo/UglifyJS2)). Set it to `false` to disable JS uglification globally.
+* `jsSelector` passed to cheerio as a selector for script tags. This allows you to avoid uglification of certain script tags (e.g. ones containing templates or other non-JS payload). Default: `'script'`.
+* `css` contains parameters to pass to clean-css (for documetation refer to [the project homepage](https://github.com/jakubpawlowicz/clean-css)). Set it to `false` to disable CSS minification globally.
+* `cssSelector` passed to cheerio as a selector for style tags. This allows you to avoid minification of certain style tags. Default: `'style'`.
 
 ## LICENSE
 
