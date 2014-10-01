@@ -66,4 +66,25 @@ describe('gulp-minify-html', function ( )
 				done();
 			}));
 	});
+
+	it('should respect the and the js css selector', function( done )
+	{
+		gulp.src(__dirname + '/fixture/index_with_templates.html')
+			.pipe(minifyInline({
+				minifyInline: {
+					jsSelector: 'script[type!="x-blah-blah-templates"]',
+					cssSelector: 'someGarbageSelectot'
+				}
+			}))
+			.pipe(through.obj(function ( file, e, c ) {
+				var contents = file.contents.toString();
+				// Assume the real check is no error being thrown by uglifyjs.
+				// Can confirm that the tag is not messed with.
+				expect(contents).to.have.string("<% something that isn't JavaScript %>");
+				// Assume that avoiding the style element in the page equates
+				// to no minifiation happening in the css.
+				expect(contents).to.match(/body {/);
+				done();
+			}));
+	});
 });
