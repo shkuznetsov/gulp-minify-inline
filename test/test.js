@@ -85,4 +85,16 @@ describe('gulp-minify-html', function ( )
 				done();
 			}));
 	});
+
+	it('should not encode non-ASCII characters', function( done )
+	{
+		gulp.src(__dirname + '/fixture/index.html')
+		gulp.src(fixture)
+			.pipe(minifyInline())
+			.pipe(through.obj(function ( file, e, c ) {
+				var contents = file.contents.toString();
+				expect(contents).to.match(/йцäöʊşə/);
+				done();
+			}));
+	});
 });
