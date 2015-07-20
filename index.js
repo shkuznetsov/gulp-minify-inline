@@ -56,7 +56,7 @@ module.exports = function ( opt )
 
 			if (style_orig !== '')
 			{
-				var style_min = new cleancss(opt.css).minify(style_orig);
+				var style_min = new cleancss(opt.css).minify(style_orig).styles;
 
 				$this.text(style_min);
 

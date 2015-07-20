@@ -25,16 +25,16 @@
 	],
 	"main": "./index.js",
 	"dependencies": {
-		"gulp-util": "^3.0.1",
-		"cheerio": "^0.17.0",
-		"uglify-js": "^2.4.15",
-		"clean-css": "^2.2.14",
-		"through2": "^0.6.1"
+		"gulp-util": "^3.0.6",
+		"cheerio": "^0.19.0",
+		"uglify-js": "^2.4.23",
+		"clean-css": "^3.3.6",
+		"through2": "^2.0.0"
 	},
 	"devDependencies": {
-		"gulp": "~3.5.2",
-		"chai": "~1.9.0",
-		"mocha": "~1.17.1"
+		"gulp": "~3.9.0",
+		"chai": "~3.2.0",
+		"mocha": "~2.2.5"
 	},
 	"scripts": {
 		"test": "mocha"
