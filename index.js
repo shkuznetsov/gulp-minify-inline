@@ -22,7 +22,7 @@ module.exports = function ( opt )
 			return callback(new gutil.PluginError('gulp-minify-inline', 'doesn\'t support Streams'));
 		}
 
-		var $ = cheerio.load(file.contents.toString());
+		var $ = cheerio.load(file.contents.toString(), {decodeEntities: false});
 
 		var has_done_nothing = true;
 
