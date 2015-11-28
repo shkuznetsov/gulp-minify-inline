@@ -31,8 +31,10 @@ module.exports = function ( opt )
 		if (opt.js !== false) $(jsSelector).each(function ( )
 		{
 			if (!opt.js) opt.js = {};
+			if (!opt.js.output) opt.js.output = {};
 
 			opt.js.fromString = true;
+			opt.js.output.inline_script = true;
 
 			var $this = $(this),
 				script_orig = $this.text().trim();
