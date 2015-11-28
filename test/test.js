@@ -17,6 +17,7 @@ describe('gulp-minify-html', function ( )
 				expect(contents).to.match(/body{/);
 				expect(contents).not.to.match(/JSComment/);
 				expect(contents).to.match(/CSSComment/);
+				expect(contents).not.to.match(/STRING<\/script/);
 				done();
 			}));
 	});
