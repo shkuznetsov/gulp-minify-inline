@@ -22,6 +22,17 @@ describe('gulp-minify-html', function ( )
 			}));
 	});
 
+	it('should be possible to enforce js.output.inline_script = false', function ( done )
+	{
+		gulp.src(fixture)
+			.pipe(minifyInline({js: {output: {inline_script: false}}}))
+			.pipe(through.obj(function ( file, e, c ) {
+				var contents = file.contents.toString();
+				expect(contents).to.match(/STRING<\/script/);
+				done();
+			}));
+	});
+
 	it('should use uglify options', function ( done )
 	{
 		gulp.src(fixture)

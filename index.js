@@ -33,8 +33,10 @@ module.exports = function ( opt )
 			if (!opt.js) opt.js = {};
 			if (!opt.js.output) opt.js.output = {};
 
+			// Default js.output.inline_script to 'true'
+			if (typeof opt.js.output.inline_script == 'undefined') opt.js.output.inline_script = true;
+
 			opt.js.fromString = true;
-			opt.js.output.inline_script = true;
 
 			var $this = $(this),
 				script_orig = $this.text().trim();
