@@ -30,16 +30,16 @@ Need a bit more control?
 var minifyInline = require('gulp-minify-inline');
 
 var options = {
-	js: {
-		output: {
-			comments: true
-		}
-	},
-	jsSelector: 'script[type!="text/x-handlebars-template"]',
-	css: {
-		keepSpecialComments: 1
-	},
-	cssSelector: 'style[do-not-minify!="true"]'
+  js: {
+    output: {
+      comments: true
+    }
+  },
+  jsSelector: 'script[type!="text/x-handlebars-template"]',
+  css: {
+    keepSpecialComments: 1
+  },
+  cssSelector: 'style[do-not-minify!="true"]'
 };
 
 gulp.task('minify-inline', function() {
