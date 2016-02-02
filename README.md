@@ -53,7 +53,7 @@ gulp.task('minify-inline', function() {
 
 Right now the following options are supported:
 
-* `js` contains parameters to pass to UglifyJS2 (for documetation refer to [the project homepage](https://github.com/mishoo/UglifyJS2)). Set it to `false` to disable JS uglification globally.
+* `js` contains parameters to pass to UglifyJS2 (for documetation refer to [the project homepage](https://github.com/mishoo/UglifyJS2)). Set it to `false` to disable JS uglification globally. *Please note that the plugin defaults `js.output.inline_script` to `true` in order to combat XSS (contributed by @TimothyGu). This is quite useful in general but you might want to re-set it to `false` explicitly in (an extremely rare) case it breaks things for you*.
 * `jsSelector` passed to cheerio as a selector for script tags. This allows you to avoid uglification of certain script tags (e.g. ones containing templates or other non-JS payload). Default: `'script'`.
 * `css` contains parameters to pass to clean-css (for documetation refer to [the project homepage](https://github.com/jakubpawlowicz/clean-css)). Set it to `false` to disable CSS minification globally.
 * `cssSelector` passed to cheerio as a selector for style tags. This allows you to avoid minification of certain style tags. Default: `'style'`.
