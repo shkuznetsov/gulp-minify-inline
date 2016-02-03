@@ -39,7 +39,7 @@ var options = {
   css: {
     keepSpecialComments: 1
   },
-  cssSelector: 'style[do-not-minify!="true"]'
+  cssSelector: 'style[data-do-not-minify!="true"]'
 };
 
 gulp.task('minify-inline', function() {
