@@ -100,7 +100,6 @@ describe('gulp-minify-html', function ( )
 
 	it('should not encode non-ASCII characters', function( done )
 	{
-		gulp.src(__dirname + '/fixture/index.html')
 		gulp.src(fixture)
 			.pipe(minifyInline())
 			.pipe(through.obj(function ( file, e, c ) {
