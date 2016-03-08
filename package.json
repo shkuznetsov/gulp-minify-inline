@@ -1,7 +1,7 @@
 {
 	"name": "gulp-minify-inline",
 	"description": "Gulp plugin to uglify inline JS and minify inline CSS",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"author": {
 		"name": "Alexander Kuznetsov",
 		"email": "alexander@kuznetsov.by",
@@ -27,12 +27,12 @@
 	"dependencies": {
 		"gulp-util": "^3.0.7",
 		"cheerio": "^0.20.0",
-		"uglify-js": "^2.6.1",
-		"clean-css": "^3.4.9",
-		"through2": "^2.0.0"
+		"uglify-js": "^2.6.2",
+		"clean-css": "^3.4.12",
+		"through2": "^2.0.1"
 	},
 	"devDependencies": {
-		"gulp": "~3.9.0",
+		"gulp": "~3.9.1",
 		"chai": "~3.5.0",
 		"mocha": "~2.4.5"
 	},
