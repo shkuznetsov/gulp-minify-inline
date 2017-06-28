@@ -59,7 +59,7 @@ describe('gulp-minify-html', function ( )
 	it('should use clean-css options', function ( done )
 	{
 		gulp.src(fixture)
-			.pipe(minifyInline({css: {keepSpecialComments: 0}}))
+			.pipe(minifyInline({css: {level: {1: {specialComments: 0}}}}))
 			.pipe(through.obj(function ( file, e, c ) {
 				var contents = file.contents.toString();
 				expect(contents).to.match(/body{/);
@@ -105,6 +105,17 @@ describe('gulp-minify-html', function ( )
 			.pipe(through.obj(function ( file, e, c ) {
 				var contents = file.contents.toString();
 				expect(contents).to.match(/йцäöʊşə/);
+				done();
+			}));
+	});
+
+	it('should work correctly with ES6 template literals', function( done )
+	{
+		gulp.src(fixture)
+			.pipe(minifyInline())
+			.pipe(through.obj(function ( file, e, c ) {
+				var contents = file.contents.toString();
+				expect(contents).to.match(/--1--/);
 				done();
 			}));
 	});

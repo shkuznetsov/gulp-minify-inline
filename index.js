@@ -1,6 +1,6 @@
 var through = require('through2'),
 	cheerio = require('cheerio'),
-	uglifyjs = require('uglify-js'),
+	uglifyes = require('uglify-es'),
 	cleancss = require('clean-css'),
 	gutil = require('gulp-util');
 
@@ -36,14 +36,12 @@ module.exports = function ( opt )
 			// Default js.output.inline_script to 'true'
 			if (typeof opt.js.output.inline_script == 'undefined') opt.js.output.inline_script = true;
 
-			opt.js.fromString = true;
-
 			var $this = $(this),
 				script_orig = $this.text().trim();
 
 			if (script_orig !== '')
 			{
-				var script_min = uglifyjs.minify(script_orig, opt.js);
+				var script_min = uglifyes.minify(script_orig, opt.js);
 
 				$this.text(script_min.code);
 
