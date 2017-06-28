@@ -2,7 +2,11 @@
 
 gulp-minify-inline is a [gulp](https://github.com/wearefractal/gulp) plugin to uglify inline scripts and minify inline styles. Works best with [gulp-minify-html](https://www.npmjs.org/package/gulp-minify-html).
 
-Uses [cheerio](https://github.com/cheeriojs/cheerio) to parse HTML, [UglifyJS2](https://github.com/mishoo/UglifyJS2) to uglify JS code and [clean-css](https://github.com/jakubpawlowicz/clean-css) to minify CSS code.
+**This version introduces support for ES6 minification through `uglify-es` package.**
+
+Uses [cheerio](https://github.com/cheeriojs/cheerio) to parse HTML, harmony branch of [UglifyJS2](https://github.com/mishoo/UglifyJS2/tree/harmony) to uglify JS code and [clean-css](https://github.com/jakubpawlowicz/clean-css) to minify CSS code.
+
+**Please note this is a major version update of the plugin, which includes significantly updated versions of `uglify-es` (v3.0.21) and `clean-css` (v4.1.4) npm packages. Options APIs of both packages have changed massively, please update your existing code accordingly, or use previous version of this package (v0.2.1).**
 
 ## Installation
 
@@ -37,7 +41,7 @@ var options = {
   },
   jsSelector: 'script[type!="text/x-handlebars-template"]',
   css: {
-    keepSpecialComments: 1
+    level: {1: {specialComments: 0}}
   },
   cssSelector: 'style[data-do-not-minify!="true"]'
 };
