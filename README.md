@@ -1,12 +1,8 @@
 # gulp-minify-inline [![NPM version](https://badge.fury.io/js/gulp-minify-inline.svg)](http://badge.fury.io/js/gulp-minify-inline) [![Build Status](https://travis-ci.org/shkuznetsov/gulp-minify-inline.svg?branch=master)](https://travis-ci.org/shkuznetsov/gulp-minify-inline)
 
-gulp-minify-inline is a [gulp](https://github.com/wearefractal/gulp) plugin to uglify inline scripts and minify inline styles. Works best with [gulp-minify-html](https://www.npmjs.org/package/gulp-minify-html).
+gulp-minify-inline is a [gulp](https://github.com/wearefractal/gulp) plugin that minifies inline JS and CSS. Works best with [gulp-minify-html](https://www.npmjs.org/package/gulp-minify-html).
 
-**This version introduces support for ES6 minification through `uglify-es` package.**
-
-Uses [cheerio](https://github.com/cheeriojs/cheerio) to parse HTML, harmony branch of [UglifyJS2](https://github.com/mishoo/UglifyJS2/tree/harmony) to uglify JS code and [clean-css](https://github.com/jakubpawlowicz/clean-css) to minify CSS code.
-
-**Please note this is a major version update of the plugin, which includes significantly updated versions of `uglify-es` (v3.0.21) and `clean-css` (v4.1.4) npm packages. Options APIs of both packages have changed massively, please update your existing code accordingly, or use previous version of this package (v0.2.1).**
+Uses [cheerio](https://github.com/cheeriojs/cheerio) to parse HTML, [terser](https://github.com/fabiosantoscode/terser) to minify JS and [clean-css](https://github.com/jakubpawlowicz/clean-css) to minify CSS.
 
 ## Installation
 
@@ -57,10 +53,10 @@ gulp.task('minify-inline', function() {
 
 Right now the following options are supported:
 
-* `js` contains parameters to pass to `UglifyJS2.minify()` (for documetation refer to [the project homepage](https://github.com/mishoo/UglifyJS2)). Set it to `false` to disable JS uglification globally. *Please note that the plugin defaults `js.output.inline_script` to `true` in order to combat XSS (contributed by @TimothyGu). This is quite useful in general but you might want to re-set it to `false` explicitly in (an extremely rare) case it breaks things for you*.
-* `jsSelector` passed to cheerio as a selector for script tags. This allows you to avoid uglification of certain script tags (e.g. ones containing templates or other non-JS payload). Default: `'script'`.
+* `js` contains parameters to pass to `terser.minify()` (for documetation refer to [the project homepage](https://github.com/fabiosantoscode/terser)). Set it to `false` to disable JS minification globally. *Please note that the plugin defaults `js.output.inline_script` to `true` in order to combat XSS (contributed by @TimothyGu). This is quite useful in general but you might want to re-set it to `false` explicitly in (an extremely rare) case it breaks things for you*.
+* `jsSelector` is passed to cheerio as a selector for script tags. This allows you to avoid minification of certain script tags (e.g. ones containing templates or other non-JS payload). Default: `'script'`.
 * `css` contains parameters to pass to clean-css (for documetation refer to [the project homepage](https://github.com/jakubpawlowicz/clean-css)). Set it to `false` to disable CSS minification globally.
-* `cssSelector` passed to cheerio as a selector for style tags. This allows you to avoid minification of certain style tags. Default: `'style'`.
+* `cssSelector` is passed to cheerio as a selector for style tags. This allows you to avoid minification of certain style tags. Default: `'style'`.
 
 ## LICENSE
 
