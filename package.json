@@ -32,9 +32,9 @@
 		"through2": "^3.0.0"
 	},
 	"devDependencies": {
-		"gulp": "~3.9.1",
-		"chai": "~4.0.2",
-		"mocha": "~3.4.2"
+		"gulp": "~4.0.0",
+		"chai": "~4.2.0",
+		"mocha": "~5.2.0"
 	},
 	"scripts": {
 		"test": "mocha"
