@@ -28,8 +28,8 @@
 		"gulp-util": "^3.0.8",
 		"cheerio": "^0.22.0",
 		"terser": "^3.14.1",
-		"clean-css": "^4.1.4",
-		"through2": "^2.0.3"
+		"clean-css": "^4.2.1",
+		"through2": "^3.0.0"
 	},
 	"devDependencies": {
 		"gulp": "~3.9.1",
