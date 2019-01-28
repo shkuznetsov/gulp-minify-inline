@@ -1,6 +1,6 @@
 var through = require('through2'),
 	cheerio = require('cheerio'),
-	uglifyes = require('uglify-es'),
+	terser = require('terser'),
 	cleancss = require('clean-css'),
 	PluginError = require('plugin-error');
 
@@ -41,7 +41,7 @@ module.exports = function ( opt )
 
 			if (script_orig !== '')
 			{
-				var script_min = uglifyes.minify(script_orig, opt.js);
+				var script_min = terser.minify(script_orig, opt.js);
 
 				$this.text(script_min.code);
 
