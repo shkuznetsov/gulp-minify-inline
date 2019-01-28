@@ -2,7 +2,7 @@ var through = require('through2'),
 	cheerio = require('cheerio'),
 	terser = require('terser'),
 	cleancss = require('clean-css'),
-	gutil = require('gulp-util');
+	PluginError = require('plugin-error');
 
 const PLUGIN_NAME = 'gulp-minify-inline';
 
@@ -19,7 +19,7 @@ module.exports = function ( opt )
 
 		if (file.isStream())
 		{
-			return callback(new gutil.PluginError('gulp-minify-inline', 'doesn\'t support Streams'));
+			return callback(new PluginError('gulp-minify-inline', 'doesn\'t support Streams'));
 		}
 
 		var $ = cheerio.load(file.contents.toString(), {decodeEntities: false});
